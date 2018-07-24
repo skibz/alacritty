@@ -159,12 +159,6 @@ pub struct WindowChanges {
     pub hide: bool,
 }
 
-impl WindowChanges {
-    fn clear(&mut self) {
-        self.hide = false;
-    }
-}
-
 impl Default for WindowChanges {
     fn default() -> WindowChanges {
         WindowChanges {

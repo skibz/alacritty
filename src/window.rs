@@ -382,15 +382,6 @@ impl Window {
         None
     }
 
-    /// Show or hide the window
-    pub fn toggle_visibility(&self) {
-        if self.is_hidden {
-            self.window.show();
-        } else {
-            self.window.hide();
-        }
-    }
-
     /// Hide the window
     pub fn hide(&self) {
         self.window.hide();
