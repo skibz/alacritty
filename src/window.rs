@@ -65,6 +65,7 @@ pub struct Window {
 
     /// Whether or not the window is the focused window.
     pub is_focused: bool,
+    pub is_hidden: bool,
 }
 
 /// Threadsafe APIs for the window
@@ -250,6 +251,7 @@ impl Window {
             window,
             cursor_visible: true,
             is_focused: true,
+            is_hidden: false,
         };
 
         window.run_os_extensions();
@@ -378,6 +380,15 @@ impl Window {
     #[cfg(target_os = "macos")]
     pub fn get_window_id(&self) -> Option<usize> {
         None
+    }
+
+    /// Show or hide the window
+    pub fn toggle_visibility(&self) {
+        if self.is_hidden {
+            self.window.show();
+        } else {
+            self.window.hide();
+        }
     }
 
     /// Hide the window

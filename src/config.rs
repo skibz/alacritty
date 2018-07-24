@@ -549,7 +549,7 @@ impl<'a> de::Deserialize<'a> for ActionWrapper {
             type Value = ActionWrapper;
 
             fn expecting(&self, f: &mut fmt::Formatter) -> fmt::Result {
-                f.write_str("Paste, Copy, PasteSelection, IncreaseFontSize, DecreaseFontSize, ResetFontSize, Show, Hide, or Quit")
+                f.write_str("Paste, Copy, PasteSelection, IncreaseFontSize, DecreaseFontSize, ResetFontSize, ToggleVisibility, Show, Hide, or Quit")
             }
 
             fn visit_str<E>(self, value: &str) -> ::std::result::Result<ActionWrapper, E>
@@ -562,6 +562,7 @@ impl<'a> de::Deserialize<'a> for ActionWrapper {
                     "IncreaseFontSize" => Action::IncreaseFontSize,
                     "DecreaseFontSize" => Action::DecreaseFontSize,
                     "ResetFontSize" => Action::ResetFontSize,
+                    "ToggleVisibility" => Action::ToggleVisibility,
                     "Show" => Action::Show,
                     "Hide" => Action::Hide,
                     "Quit" => Action::Quit,

@@ -136,6 +136,11 @@ impl<'a, N: Notify + 'a> input::ActionContext for ActionContext<'a, N> {
     }
 
     #[inline]
+    fn toggle_window(&mut self) {
+        self.window_changes.hide = !self.window_changes.hide
+    }
+
+    #[inline]
     fn show_window(&mut self) {
         self.window_changes.hide = false;
     }
@@ -489,7 +494,7 @@ impl<N: Notify> Processor<N> {
         } else {
             window.show();
         }
-        
+
         self.wait_for_event = !terminal.dirty;
         terminal
     }
