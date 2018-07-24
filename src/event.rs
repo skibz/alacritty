@@ -136,6 +136,11 @@ impl<'a, N: Notify + 'a> input::ActionContext for ActionContext<'a, N> {
     }
 
     #[inline]
+    fn show_window(&mut self) {
+        self.window_changes.hide = false;
+    }
+
+    #[inline]
     fn hide_window(&mut self) {
         self.window_changes.hide = true;
     }
@@ -481,11 +486,11 @@ impl<N: Notify> Processor<N> {
 
         if self.window_changes.hide {
             window.hide();
+        } else {
+            window.show();
         }
-
-        self.window_changes.clear();
+        
         self.wait_for_event = !terminal.dirty;
-
         terminal
     }
 

@@ -384,6 +384,11 @@ impl Window {
     pub fn hide(&self) {
         self.window.hide();
     }
+
+    /// Show the window
+    pub fn show(&self) {
+        self.window.show();
+    }
 }
 
 pub trait OsExtensions {

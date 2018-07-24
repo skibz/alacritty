@@ -66,6 +66,7 @@ pub trait ActionContext {
     fn last_modifiers(&mut self) -> &mut ModifiersState;
     fn change_font_size(&mut self, delta: f32);
     fn reset_font_size(&mut self);
+    fn show_window(&mut self);
     fn hide_window(&mut self);
 }
 
@@ -171,6 +172,9 @@ pub enum Action {
     /// Run given command
     Command(String, Vec<String>),
 
+    /// Shows the Alacritty window
+    Show,
+
     /// Hides the Alacritty window
     Hide,
 
@@ -227,6 +231,9 @@ impl Action {
                         warn!("couldn't run command: {}", err);
                     },
                 }
+            },
+            Action::Show => {
+                ctx.show_window();
             },
             Action::Hide => {
                 ctx.hide_window();
@@ -712,6 +719,10 @@ mod tests {
         }
         fn reset_font_size(&mut self) {
         }
+
+        fn show_window(&mut self) {
+        }
+
         fn hide_window(&mut self) {
         }
     }
