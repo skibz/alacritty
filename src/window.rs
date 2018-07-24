@@ -65,7 +65,6 @@ pub struct Window {
 
     /// Whether or not the window is the focused window.
     pub is_focused: bool,
-    pub is_hidden: bool,
 }
 
 /// Threadsafe APIs for the window
